@@ -1,10 +1,12 @@
 // positioning
 @mixin centerX {
+    position: absolute;
     left: 50%;
     transform: translateX(-50%);
 }
 
 @mixin centerY {
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -12,6 +14,7 @@
 @mixin centerXY {
     @include centerX;
     @include centerY;
+    transform: translate(-50%, -50%);
 }
 
 @mixin absolute-full() {
@@ -39,28 +42,3 @@
     background-color: $bg;
     @extend %flex-center;
 } */
-
-$maxWidth: 1920px;
-$container: 1140px;
-$gap: 15px;
-
-@mixin adaptive-value($property, $startSize, $minSize) {
-    $addSize=$startSize - $minSize;
-    #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
-
-    /* @if $type==1 {
-        #{$property}: $startSize + px;
-
-        @media (max-width: #{$container}) {
-            #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$container - 320}));
-        }
-    } @else if $type ==2 {
-        #{$property}: $startSize+px;
-
-        @media (min-width: #{$container}) {
-            #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
-        }
-    } @else {
-        #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
-    } */
-}
